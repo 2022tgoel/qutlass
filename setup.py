@@ -44,7 +44,7 @@ def detect_cc():
     major, minor = torch.cuda.get_device_capability(dev)
     return major * 10 + minor
 
-cc = detect_cc()
+cc = 100
 
 def get_cuda_arch_flags():
     flags = [
@@ -74,11 +74,11 @@ def third_party_cmake():
         sys.exit(1)
 
 if __name__ == '__main__':
-    assert torch.cuda.is_available(), "CUDA is not available!"
-    device = torch.cuda.current_device()
-    print(f"Current device: {torch.cuda.get_device_name(device)}")
-    print(f"Current CUDA capability: {torch.cuda.get_device_capability(device)}")
-    assert torch.cuda.get_device_capability(device)[0] >= 10, f"CUDA capability must be >= 10.0, yours is {torch.cuda.get_device_capability(device)}"
+    # assert torch.cuda.is_available(), "CUDA is not available!"
+    # device = torch.cuda.current_device()
+    # print(f"Current device: {torch.cuda.get_device_name(device)}")
+    # print(f"Current CUDA capability: {torch.cuda.get_device_capability(device)}")
+    # assert torch.cuda.get_device_capability(device)[0] >= 10, f"CUDA capability must be >= 10.0, yours is {torch.cuda.get_device_capability(device)}"
 
     print(f"PyTorch version: {torch_version}")
     m = re.match(r'^(\d+)\.(\d+)', torch_version)
